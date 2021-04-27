@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\CommentService;
+use App\Http\Requests\CommentFormRequest;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,9 +12,13 @@ class CommentController extends Controller
     public function index()
     {
         try {
+
             $comments = (new CommentService)->getAllComments();
+
         } catch (\Exception $e) {
+
             return response(['message' => $e->getMessage(), 'code' => $e->getCode()], 422);
+
         }
 
         return response(
@@ -26,13 +31,16 @@ class CommentController extends Controller
         );
     }
 
-
     public function store(CommentFormRequest $request)
     {
         try {
+
             $newComment = (new CommentService)->createNewComment($request);
+
         } catch (\Exception $e) {
+
             return response(['message' => $e->getMessage(), 'code' => $e->getCode()], 422);
+
         }
 
         return response(

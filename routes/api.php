@@ -15,4 +15,6 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::resource('comments', CommentController::class);
+Route::resource('comments', CommentController::class)->only([
+    'index', 'store'
+]);

@@ -8,7 +8,7 @@ class CommentService
 
     public function getAllComments() {
 
-        $comments = Comment::all()->groupBy("parent_id");
+        $comments = Comment::all()->sortByDesc('created_at')->groupBy("parent_id");
 
         if (count($comments) > 0) {
 
@@ -32,7 +32,7 @@ class CommentService
         $newComment = Comment::create($request->toArray());
 
         if (! $newComment) {
-            throw new \Exception("Unable to add comment.", 500);
+            throw new \Exception("Unable to create new comment.", 500);
         }
 
         return $newComment;

@@ -25,8 +25,8 @@ class CommentFormRequest extends FormRequest
     {
         return [
             'name'  => [ 'required', 'string' ],
-            'body'  => [ 'required', 'string' ]
-            'level' => [ 'required', 'number' ]
+            'body'  => [ 'required', 'string' ],
+            'level' => [ 'required', 'integer' ]
         ];
     }
 }
